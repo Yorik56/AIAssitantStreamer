@@ -1,7 +1,5 @@
 # Guide d’installation – AIAssistantStreamer (Windows)
 
-## 👤 Crédits
-
 ![AIAssistantStreamer](https://raw.githubusercontent.com/anisayari/AIAssitantStreamer/main/assets/topic.png)
 
 ## 🧩 Prérequis
@@ -84,14 +82,7 @@ KEYWORD_PATH_PORCUPINE=C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer\assets\E
 MODEL_PATH_PROCUPINE=C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer\assets\porcupine_params_fr.pv
 ```
 
-## ▶️ Lancer l’assistant
-
-```bat
-venv\Scripts\activate
-python main.py
-```
-
-L’assistant répondra vocalement après détection de votre **mot-clé personnalisé**.
+L’assistant répondra vocalement après détection de votre **Wake Word**.
 
 ## 🔉 Générer les voix d’introduction (ElevenLabs)
 
@@ -100,6 +91,13 @@ L’assistant répondra vocalement après détection de votre **mot-clé personn
 3. Saisir votre texte → **Generate speech**
 4. Télécharger l’audio au format MP3
 5. Placer le fichier dans le dossier `voix_intro/`
+
+## ▶️ Lancer l’assistant
+
+```bat
+venv\Scripts\activate
+python main.py
+```
 
 ## 🐧 Debian 11 (Linux) – Dépendances pour PyAudio
 
