@@ -17,7 +17,7 @@ Un projet proposé par l'ingénieur en intelligence artificielle et créateur de
 
 ## 🗂️ Télécharger le projet
 
-- [Télécharger le ZIP du projet](https://github.com/anisayari/AIAssistantStreamer/archive/refs/heads/main.zip)
+- [Télécharger le ZIP du projet](https://github.com/Yorik56/AIAssitantStreamer/archive/refs/heads/main.zip)
 - Extraire dans `C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer`  
   (le dossier peut être placé où vous le souhaitez)
 
