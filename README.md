@@ -1,55 +1,108 @@
-# ASSISTANT IA POUR STREAMER
-### Pour du divertissement
-![alt text](https://raw.githubusercontent.com/anisayari/AIAssitantStreamer/main/assets/topic.png)
+# Guide d’installation – AIAssistantStreamer (Windows)
 
-@TODO CONTRIBUTORS :list 
-- Screen des étapes
-- Faire une installation avec un requirements.txt
-- rendre plus efficace le code (réduire la latence)
-- Rajouter du langhchain (si nécéssaire et testant la latence) pour modifier son LLM etc..
-- Améliorer le README
-- etc....
-- 
-## Configuration nécessaire
+## 👤 Crédits
 
-1. Exécutez `pip install -r requirements.txt` pour installer toutes les dépendances.
+![AIAssistantStreamer](https://raw.githubusercontent.com/anisayari/AIAssitantStreamer/main/assets/topic.png)
 
-2. Remplissez le fichier `.env.example` avec vos clés API pour OPENAI, ELEVENLABS, et PICOVOICE. Renommez ce fichier en `.env`.
+## 🧩 Prérequis
 
-## Comment obtenir ces clés API
+- [Installer **Python 3.11+**](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)  
+  (⚠️ Cocher **“Add Python to PATH”** pendant l’installation)
 
-### Récupérer sa clé twitch
+## 🗂️ Télécharger le projet
 
+- [Télécharger le ZIP du projet](https://github.com/anisayari/AIAssistantStreamer/archive/refs/heads/main.zip)
+- Extraire dans `C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer`  
+  (le dossier peut être placé où vous le souhaitez)
 
+## ⚙️ Installation
 
-### Créez un compte sur OPENAI
+1. Ouvrir le dossier du projet.
+2. Cliquer dans la barre d’adresse, taper `cmd`, appuyer sur **Entrée**.
+3. Exécuter les commandes suivantes :
 
-1. Allez sur [OpenAI](https://www.openai.com/).
-2. Inscrivez-vous pour un compte.
-3. Une fois connecté, vous trouverez votre clé API dans le tableau de bord.
+```bat
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+copy .env.example .env
+````
 
-### Créez un compte sur ELEVENLABS
+4. Ouvrir le fichier `.env` avec le Bloc-notes
+   (⚠️ Ne rien modifier pour le moment, suivez d’abord les étapes suivantes)
 
-1. Allez sur [ElevenLabs](https://beta.elevenlabs.io/).
-2. Inscrivez-vous pour un compte.
-3. Une fois connecté, vous trouverez votre clé API dans le tableau de bord.
+## 🔑 Clé API OpenAI
 
-## Créez le mot clé (Wake Word) dans PICOVOICE
+1. Créer un compte sur : [https://platform.openai.com/](https://platform.openai.com/)
+2. Aller dans : [https://platform.openai.com/settings/organization/api-keys](https://platform.openai.com/settings/organization/api-keys)
+3. Cliquer sur **Create new secret key** puis copier la clé dans `.env` :
 
-1. Allez sur [Picovoice Console](https://console.picovoice.ai/).
-2. Créez un nouveau mot clé (Wake Word).
-3. Téléchargez les fichiers nécessaires et ajoutez-les à votre projet.
+```env
+OPENAI_API_KEY=sk-...
+```
 
-## Comment générer les voix d'introduction sur Eleven
+## 🔊 Clé API ElevenLabs
 
-1. Connectez-vous à votre compte ElevenLabs.
-2. Utilisez la fonctionnalité de génération de voix pour créer des voix d'introduction personnalisées.
-3. Téléchargez ces voix et ajoutez-les manuellement à votre dossier 'voix_intro'.
+1. Créer un compte sur : [https://www.elevenlabs.io/](https://www.elevenlabs.io/)
+2. Aller dans : [https://elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys)
+3. Cliquer sur **Create API Key**
+4. Donner un nom à la clé (ex : `Assistant IA`)
+5. Activer **Text to Speech → has access**
+6. Copier la clé dans `.env` :
 
-## Annexes
+```env
+ELEVENLABS_API_KEY=sk-...
+```
 
-### Debian 11
+## 🗣️ Clé API Picovoice
 
-Pour **pyaudio** il est nécessaire d'installer les paquets suivants:
+1. Créer un compte sur : [https://picovoice.ai/](https://picovoice.ai/)
+2. Une fois connecté, récupérer la clé API affichée
+3. Copier la clé dans `.env` :
 
-* sudo apt-get install libasound-dev portaudio19-dev libportaudio2 libportaudiocpp0
+```env
+ACCES_KEY_PORCUPINE=QsRwq...
+```
+
+## 🎙️ Générer un Wake Word
+
+1. Aller sur : [https://console.picovoice.ai/](https://console.picovoice.ai/)
+2. Cliquer sur **Create Wake Word**
+3. Choisir la langue (ex. français)
+4. Saisir le mot-clé vocal (ex. `Excuse-moi`)
+5. Télécharger le fichier `.ppn` généré
+6. Placer ce fichier dans `assets/`
+7. Dans `.env` :
+
+```env
+KEYWORD_PATH_PORCUPINE=C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer\assets\Excuse-moi_fr_windows_v3_0_0.ppn
+```
+
+8. Le fichier `porcupine_params_fr.pv` est déjà présent dans `assets/`. Ajouter aussi :
+
+```env
+MODEL_PATH_PROCUPINE=C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer\assets\porcupine_params_fr.pv
+```
+
+## ▶️ Lancer l’assistant
+
+```bat
+venv\Scripts\activate
+python main.py
+```
+
+L’assistant répondra vocalement après détection de votre **mot-clé personnalisé**.
+
+## 🔉 Générer les voix d’introduction (ElevenLabs)
+
+1. Se connecter : [https://elevenlabs.io/app/voice-library](https://elevenlabs.io/app/voice-library)
+2. Choisir une voix → **Add to my voices** → puis cliquer sur **Use voice**
+3. Saisir votre texte → **Generate speech**
+4. Télécharger l’audio au format MP3
+5. Placer le fichier dans le dossier `voix_intro/`
+
+## 🐧 Debian 11 (Linux) – Dépendances pour PyAudio
+
+```bash
+sudo apt-get install libasound-dev portaudio19-dev libportaudio2 libportaudiocpp0
+```
