@@ -79,14 +79,14 @@ Une wake word est un mot ou une phrase spécifique que l'utilisateur prononce po
 3. Choisir la langue (ex. français)
 4. Saisir le mot-clé vocal (ex. `Excuse-moi`)
 5. Télécharger le fichier `.ppn` généré
-6. Placer ce fichier dans `assets/`
+6. Placer ce fichier dans le dossier `assets` à la racine du projet
 7. Dans `.env` :
 
 ```env
 KEYWORD_PATH_PORCUPINE=C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer\assets\Excuse-moi_fr_windows_v3_0_0.ppn
 ```
 
-8. Le fichier `porcupine_params_fr.pv` est déjà présent dans `assets/`. Ajouter aussi :
+8. Le fichier `porcupine_params_fr.pv` est déjà présent dans `assets`. Ajouter aussi :
 
 ```env
 MODEL_PATH_PROCUPINE=C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer\assets\porcupine_params_fr.pv
