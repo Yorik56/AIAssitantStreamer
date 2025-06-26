@@ -1,10 +1,10 @@
 # Guide d’installation – AIAssistantStreamer (Windows)
 
-AIAssistantStreamer est un assistant vocal que vous pouvez faire tourner en local sur votre propre PC. 
+AIAssistantStreamer est un assistant vocal que vous pouvez faire tourner en local sur votre propre PC.
 
-Il vous écoute quand vous prononcez un mot-clé (comme "Ok Google"), comprend ce que vous dites, génère une réponse originale grâce à l’intelligence artificielle, puis vous répond avec une voix réaliste. 
+Il vous écoute lorsque vous prononcez un mot-clé (comme "Ok Google"), comprend ce que vous dites, génère une réponse originale grâce à l’intelligence artificielle, puis vous répond avec une voix réaliste.
 
-Vous pouvez aussi personnaliser des messages d’introduction audio.
+Vous pouvez également personnaliser des messages d’introduction audio.
 
 <img src="https://raw.githubusercontent.com/anisayari/AIAssitantStreamer/main/assets/topic.png" alt="AIAssistantStreamer" width="800"/>
 
@@ -12,20 +12,20 @@ Un projet proposé par l'ingénieur en intelligence artificielle et créateur de
 
 ## 🧩 Prérequis
 
-- [Installer **Python 3.11+**](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)  
+* [Installer **Python 3.11+**](https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe)
   (⚠️ Cocher **“Add Python to PATH”** pendant l’installation)
 
 ## 🗂️ Télécharger le projet
 
-- [Télécharger le ZIP du projet](https://github.com/Yorik56/AIAssitantStreamer/archive/refs/heads/main.zip)
-- Extraire dans `C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer`  
+* [Télécharger le ZIP du projet](https://github.com/Yorik56/AIAssitantStreamer/archive/refs/heads/main.zip)
+* Extraire dans `C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer`
   (le dossier peut être placé où vous le souhaitez)
 
 ## ⚙️ Installation
 
 1. Ouvrir le dossier du projet.
 2. Cliquer dans la barre d’adresse du dossier, taper `cmd`, puis appuyer sur **Entrée** pour ouvrir une invite de commandes.
-3. Copier les lignes ci-dessous et collez-les dans l'invite de commandes. Elles seront exécutées une par une :
+3. Copier les lignes ci-dessous et les coller dans l'invite de commandes. Elles seront exécutées une par une :
 
 ```bat
 python -m venv venv
@@ -40,7 +40,7 @@ copy .env.example .env
 ## 🔑 Clé API OpenAI
 
 1. Créer un compte sur : [https://platform.openai.com/](https://platform.openai.com/)
-2. Aller dans : [https://platform.openai.com/settings/organization/api-keys](https://platform.openai.com/settings/organization/api-keys)
+2. Aller sur : [https://platform.openai.com/settings/organization/api-keys](https://platform.openai.com/settings/organization/api-keys)
 3. Cliquer sur **Create new secret key** puis copier la clé dans `.env` :
 
 ```env
@@ -50,7 +50,7 @@ OPENAI_API_KEY=sk-...
 ## 🔊 Clé API ElevenLabs
 
 1. Créer un compte sur : [https://www.elevenlabs.io/](https://www.elevenlabs.io/)
-2. Aller dans : [https://elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys)
+2. Aller sur : [https://elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys)
 3. Cliquer sur **Create API Key**
 4. Donner un nom à la clé (ex : `Assistant IA`)
 5. Activer **Text to Speech → has access**
@@ -94,14 +94,28 @@ MODEL_PATH_PROCUPINE=C:\Users\VOTRE_NOM\Documents\AIAssistantStreamer\assets\por
 
 L’assistant répondra vocalement après détection de votre **Wake Word**.
 
-## 🔉 Générer les voix d’introduction (ElevenLabs)
-Les voix d’introduction sont des messages audio courts utilisés pour accueillir ou signaler l’activation d’un assistant vocal. 
-Par exemple : " Bonjour, comment puis-je vous aider ?" 
+## 🔉 Choisir la voix de votre assistant IA (ElevenLabs)
 
+Par défaut, une voix est déjà configurée dans ce projet, mais vous pouvez si vous le souhaitez en choisir une autre en suivant les étapes suivantes :
+
+1. Se connecter : [https://elevenlabs.io/app/voice-library](https://elevenlabs.io/app/voice-library)
+2. Choisir une voix, cliquer sur (...) (More actions)
+3. Cliquer sur **Copy voice ID** puis coller cet identifiant dans le `.env`
+
+```env
+ELEVENLAB_VOICE_ID=...
+```
+
+## 🔉 Générer la voix d’introduction (ElevenLabs)
+
+Les voix d’introduction sont des messages audio courts utilisés pour accueillir ou signaler l’activation d’un assistant vocal.
+Par exemple : "Bonjour, comment puis-je vous aider ?"
+
+Par défaut, une voix d'introduction est déjà configurée dans ce projet, mais vous pouvez si vous le souhaitez en ajouter une autre en suivant les étapes suivantes :
 
 1. Se connecter : [https://elevenlabs.io/app/voice-library](https://elevenlabs.io/app/voice-library)
 2. Choisir une voix, cliquer sur (+) (Add to my voices), puis cliquer sur T (Use voice)
-3. Saisir votre texte, cliquer sur  **Generate speech**
+3. Saisir votre texte, cliquer sur **Generate speech**
 4. Télécharger l’audio au format MP3
 5. Placer le fichier dans le dossier `voix_intro/`
 
@@ -111,7 +125,17 @@ Par exemple : " Bonjour, comment puis-je vous aider ?"
 venv\Scripts\activate
 python main.py
 ```
---- 
+
+## 🎤 Activer et arrêter l’écoute
+
+* L’assistant reste **en veille** en continu.
+* Il s’active dès que vous prononcez le **mot-clé défini** (wake word).
+* Pour arrêter l’écoute, **dites simplement “merci”** à la fin d’une interaction.
+
+> Vous pouvez également quitter le programme à tout moment avec `Ctrl+C`.
+
+---
+
 ## Annexes
 
 ### 🐧 Debian 11 (Linux) – Dépendances pour PyAudio
