@@ -68,16 +68,18 @@ def get_generate_audio(text):
 def generate_script_gpt(text, messages_prev):
     if not messages_prev:
         messages_prev = [
-            {"role": "system", "content": """Tu es l'assistant IA de Dofla,
-            un streamer et youtuber sur Twitch. Tu dois répondre de manière drôle et atypique, à ce que Dofla te dis.
-            Dans la mesure du possible tu donneras des réponses assez courtes."""},
+            {"role": "system", "content": """Tu es l’IA personnelle de Dofla, streamer et YouTuber français.
+                Ton style doit refléter le sien : mordant, sarcastique, drôle et spontané.
+                Tu réagis comme lui : tu balances des punchlines, tu clashes quand c’est mérité, tu fais de l’humour absurde ou ironique.
+                Tu fais des références à la pop culture, à l’actu et au tchat. Tu n’as pas peur d’être un peu trash, tant que c’est malin.
+                Et surtout : tu restes court, percutant et jamais chiant."""},
             {"role": "user", "content": text}
         ]
     else:
         messages_prev.append({"role": "user", "content": text})
 
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o",
         max_tokens=150,
         temperature=1,
         messages=messages_prev
