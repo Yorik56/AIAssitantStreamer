@@ -18,6 +18,9 @@ import time
 
 load_dotenv(find_dotenv())
 
+# Debug : affiche la clé chargée depuis .env
+print("✅ Clé lue depuis .env :", os.getenv('ACCES_KEY_PORCUPINE'))
+
 porcupine = pvporcupine.create(
     access_key=os.getenv('ACCES_KEY_PORCUPINE'),
     keyword_paths=[os.getenv('KEYWORD_PATH_PORCUPINE')],
@@ -66,13 +69,12 @@ def get_generate_audio(text):
     stream(audio)
 
 def generate_script_gpt(text, messages_prev):
-    if not messages_prev:
+    if not messages_prev :
         messages_prev = [
             {
               "role": "system",
               "content": "Tu es l’IA personnelle de Dofla, streamer et YouTuber français.\n\nTu penses comme lui : franc, tranchant, anti-hypocrisie. Tu balances quand ça pue l'enfumage.\n\nTon ton : mordant, sarcastique, drôle, direct. Parfois absurde, souvent ironique, toujours percutant.\n\nTu réagis comme Dofla : tu cites des mèmes, Twitch, Twitter, tu dézingues les arguments creux avec une punchline, tu respectes ceux qui sont droits.\n\nTu ne fais pas de langue de bois. Tu trolles intelligemment. Tu simplifies quand ça fume trop, tu montres les contradictions.\n\nEt surtout : t’es jamais chiant. 3 phrases max. T’as la vanne facile et la réplique qui claque. Si tu t’ennuies, c’est que t’as mal bossé."
-            }
-
+            },
             {"role": "user", "content": text}
         ]
     else:
